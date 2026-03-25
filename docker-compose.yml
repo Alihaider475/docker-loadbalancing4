@@ -1,0 +1,183 @@
+services:
+
+  # =========================================================================
+  # STATIC WEBSITE CONTAINERS 
+  # =========================================================================
+
+  website1:
+    build:
+      context: ./websites/site1
+      dockerfile: Dockerfile
+    container_name: website1
+    restart: unless-stopped
+    networks:
+      - webnet
+    labels:
+      - "service=website"
+      - "site=portfolio"
+
+  website2:
+    build:
+      context: ./websites/site2
+      dockerfile: Dockerfile
+    container_name: website2
+    restart: unless-stopped
+    networks:
+      - webnet
+    labels:
+      - "service=website"
+      - "site=restaurant"
+
+  website3:
+    build:
+      context: ./websites/site3
+      dockerfile: Dockerfile
+    container_name: website3
+    restart: unless-stopped
+    networks:
+      - webnet
+    labels:
+      - "service=website"
+      - "site=blog"
+
+  website4:
+    build:
+      context: ./websites/site4
+      dockerfile: Dockerfile
+    container_name: website4
+    restart: unless-stopped
+    networks:
+      - webnet
+    labels:
+      - "service=website"
+      - "site=saas-landing"
+
+  # =========================================================================
+  # LOAD BALANCER - HAProxy
+  # =========================================================================
+
+  haproxy:
+    image: haproxy:2.9-alpine
+    container_name: haproxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8404:8404"
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - website1
+      - website2
+      - website3
+      - website4
+    networks:
+      - webnet
+
+  # =========================================================================
+  # HIGH AVAILABILITY - Keepalived
+  # =========================================================================
+
+  keepalived-master:
+    build:
+      context: ./keepalived
+      dockerfile: Dockerfile
+    container_name: keepalived-master
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_BROADCAST
+      - NET_RAW
+    volumes:
+      - ./keepalived/keepalived-master.conf:/usr/local/etc/keepalived/keepalived.conf:ro
+    environment:
+      - KEEPALIVED_INTERFACE=eth0
+      - KEEPALIVED_VIRTUAL_IPS=192.168.100.100
+      - KEEPALIVED_PRIORITY=100
+      - KEEPALIVED_STATE=MASTER
+    networks:
+      - webnet
+
+  keepalived-backup:
+    build:
+      context: ./keepalived
+      dockerfile: Dockerfile
+    container_name: keepalived-backup
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_BROADCAST
+      - NET_RAW
+    volumes:
+      - ./keepalived/keepalived-backup.conf:/usr/local/etc/keepalived/keepalived.conf:ro
+    environment:
+      - KEEPALIVED_INTERFACE=eth0
+      - KEEPALIVED_VIRTUAL_IPS=192.168.100.100
+      - KEEPALIVED_PRIORITY=90
+      - KEEPALIVED_STATE=BACKUP
+    networks:
+      - webnet
+
+  # =========================================================================
+  # MONITORING - Prometheus
+  # =========================================================================
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.enable-lifecycle'
+    networks:
+      - webnet
+
+  # =========================================================================
+  # MONITORING - Grafana
+  # =========================================================================
+
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - webnet
+
+# =============================================================================
+# NETWORKS
+# =============================================================================
+
+networks:
+  webnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+
+# =============================================================================
+# PERSISTENT VOLUMES
+# =============================================================================
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local

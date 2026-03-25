@@ -1,0 +1,27 @@
+# Prometheus Configuration
+# Scrapes metrics from HAProxy and self-monitoring
+
+global:
+  scrape_interval: 15s          # Default scrape interval
+  evaluation_interval: 15s      # Rule evaluation interval
+  scrape_timeout: 10s
+
+# Alertmanager configuration (optional)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['alertmanager:9093']
+
+# Scrape configurations
+scrape_configs:
+
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # HAProxy metrics via built-in Prometheus exporter
+  - job_name: 'haproxy'
+    static_configs:
+      - targets: ['haproxy:8404']
+    metrics_path: /metrics

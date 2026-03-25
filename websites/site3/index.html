@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse Blog - Site 3</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7fa; color: #2d3748; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 60px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 100; }
+        nav .logo { font-size: 1.5rem; font-weight: 800; color: #2563eb; }
+        nav .logo span { color: #2d3748; }
+        nav ul { list-style: none; display: flex; gap: 28px; }
+        nav ul a { color: #64748b; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav ul a:hover { color: #2563eb; }
+        .hero { padding: 140px 60px 60px; text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #f4f7fa 100%); }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; color: #1e293b; }
+        .hero h1 span { color: #2563eb; }
+        .hero p { font-size: 1.15rem; color: #64748b; max-width: 600px; margin: 0 auto 20px; }
+        .server-info { background: #e0e7ff; padding: 8px 16px; border-radius: 6px; display: inline-block; color: #2563eb; font-size: 0.85rem; font-family: monospace; }
+        .posts { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+        .post { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; transition: 0.3s; }
+        .post:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .post-meta { display: flex; gap: 16px; margin-bottom: 12px; font-size: 0.85rem; color: #94a3b8; }
+        .post-meta .category { background: #eff6ff; color: #2563eb; padding: 2px 10px; border-radius: 12px; font-weight: 600; }
+        .post h2 { font-size: 1.4rem; margin-bottom: 10px; color: #1e293b; }
+        .post h2 a { text-decoration: none; color: inherit; transition: 0.2s; }
+        .post h2 a:hover { color: #2563eb; }
+        .post p { color: #64748b; line-height: 1.7; }
+        .post .read-more { display: inline-block; margin-top: 15px; color: #2563eb; font-weight: 600; text-decoration: none; }
+        .post .read-more:hover { text-decoration: underline; }
+        .tags { display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }
+        .tag { background: #f1f5f9; color: #64748b; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; }
+        footer { text-align: center; padding: 30px; color: #94a3b8; border-top: 1px solid #e2e8f0; background: #fff; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Tech<span>Pulse</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <section class="hero" id="home">
+        <h1>Stay Ahead with <span>TechPulse</span></h1>
+        <p>Your daily dose of technology insights, tutorials, and industry analysis from leading engineers and researchers.</p>
+        <div class="server-info">Served from: Site 3 (Blog) | Container: website-3</div>
+    </section>
+    <div class="posts" id="articles">
+        <article class="post">
+            <div class="post-meta">
+                <span class="category">DevOps</span>
+                <span>March 25, 2026</span>
+                <span>8 min read</span>
+            </div>
+            <h2><a href="#">Containerized Deployments: HAProxy + Keepalived in Production</a></h2>
+            <p>Learn how to set up a highly available containerized environment using HAProxy for load balancing and Keepalived for automatic failover. We'll cover virtual IPs, health checks, and monitoring with Prometheus.</p>
+            <div class="tags"><span class="tag">Docker</span><span class="tag">HAProxy</span><span class="tag">High Availability</span></div>
+            <a href="#" class="read-more">Read More &rarr;</a>
+        </article>
+        <article class="post">
+            <div class="post-meta">
+                <span class="category">Cloud</span>
+                <span>March 22, 2026</span>
+                <span>6 min read</span>
+            </div>
+            <h2><a href="#">Kubernetes vs Docker Compose: When to Use What</a></h2>
+            <p>Both orchestration tools have their place. We break down the use cases, scaling capabilities, and operational overhead of each approach to help you make the right choice for your project.</p>
+            <div class="tags"><span class="tag">Kubernetes</span><span class="tag">Docker Compose</span><span class="tag">Architecture</span></div>
+            <a href="#" class="read-more">Read More &rarr;</a>
+        </article>
+        <article class="post">
+            <div class="post-meta">
+                <span class="category">Monitoring</span>
+                <span>March 18, 2026</span>
+                <span>10 min read</span>
+            </div>
+            <h2><a href="#">Building Observability Stacks with Prometheus and Grafana</a></h2>
+            <p>A complete guide to setting up production-grade monitoring. From metric collection and alerting rules to building beautiful Grafana dashboards that your entire team can use.</p>
+            <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Observability</span></div>
+            <a href="#" class="read-more">Read More &rarr;</a>
+        </article>
+    </div>
+    <footer>
+        <p>&copy; 2026 TechPulse Blog - Static Website Template 3</p>
+    </footer>
+</body>
+</html>

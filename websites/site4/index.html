@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudSync - Site 4</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #1a1a2e; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 60px; background: #fff; position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
+        nav .logo { font-size: 1.5rem; font-weight: 800; }
+        nav .logo span { color: #10b981; }
+        nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
+        nav ul a { color: #64748b; text-decoration: none; font-weight: 500; }
+        nav ul a:hover { color: #10b981; }
+        .cta-btn { background: #10b981; color: #fff !important; padding: 10px 24px; border-radius: 8px; font-weight: 600; }
+        .cta-btn:hover { background: #059669 !important; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 0 60px; background: linear-gradient(135deg, #f0fdf4 0%, #fff 40%, #f0fdf4 100%); }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+        .hero h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero h1 span { color: #10b981; }
+        .hero p { font-size: 1.15rem; color: #64748b; margin-bottom: 30px; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 16px; }
+        .btn-primary { padding: 14px 32px; background: #10b981; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-primary:hover { background: #059669; }
+        .btn-outline { padding: 14px 32px; border: 2px solid #d1d5db; color: #1a1a2e; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-outline:hover { border-color: #10b981; color: #10b981; }
+        .hero-visual { background: #1a1a2e; border-radius: 16px; padding: 30px; color: #10b981; font-family: monospace; font-size: 0.9rem; line-height: 1.8; }
+        .hero-visual .comment { color: #64748b; }
+        .hero-visual .keyword { color: #818cf8; }
+        .hero-visual .string { color: #fbbf24; }
+        .section { padding: 80px 60px; }
+        .section h2 { font-size: 2.2rem; text-align: center; margin-bottom: 15px; }
+        .section .subtitle { text-align: center; color: #64748b; margin-bottom: 50px; font-size: 1.1rem; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .feature { text-align: center; padding: 30px; border-radius: 12px; border: 1px solid #e5e7eb; transition: 0.3s; }
+        .feature:hover { border-color: #10b981; box-shadow: 0 4px 15px rgba(16,185,129,0.1); }
+        .feature .icon { width: 60px; height: 60px; background: #f0fdf4; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; }
+        .feature h3 { margin-bottom: 10px; }
+        .feature p { color: #64748b; line-height: 1.6; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; text-align: center; padding: 60px 0; }
+        .stat h3 { font-size: 2.5rem; color: #10b981; }
+        .stat p { color: #64748b; }
+        footer { text-align: center; padding: 30px; color: #94a3b8; border-top: 1px solid #e5e7eb; }
+        .server-info { background: #f0fdf4; padding: 8px 16px; border-radius: 6px; display: inline-block; margin-top: 15px; color: #10b981; font-size: 0.85rem; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Cloud<span>Sync</span></div>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#docs">Docs</a></li>
+            <li><a href="#" class="cta-btn">Get Started</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <h1>Sync your infrastructure <span>effortlessly</span></h1>
+                <p>CloudSync automates your deployment pipeline. Push code, and we handle the rest — from building containers to scaling across regions.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Start Free Trial</a>
+                    <a href="#" class="btn-outline">View Demo</a>
+                </div>
+                <div class="server-info">Served from: Site 4 (SaaS) | Container: website-4</div>
+            </div>
+            <div class="hero-visual">
+                <span class="comment"># Deploy with one command</span><br>
+                <span class="keyword">$</span> cloudsync deploy --prod<br><br>
+                <span class="comment"># Building containers...</span><br>
+                <span class="string">✓ Image built (2.3s)</span><br>
+                <span class="string">✓ Tests passed (5.1s)</span><br>
+                <span class="string">✓ Deployed to 3 regions</span><br>
+                <span class="string">✓ Health checks passing</span><br><br>
+                <span class="comment"># Live at:</span><br>
+                <span class="keyword">https://</span>app.cloudsync.io
+            </div>
+        </div>
+    </section>
+    <section class="section" id="features">
+        <h2>Why Teams Choose CloudSync</h2>
+        <p class="subtitle">Everything you need to ship faster and sleep better.</p>
+        <div class="features">
+            <div class="feature">
+                <div class="icon">⚡</div>
+                <h3>Instant Deploy</h3>
+                <p>Zero-downtime deployments with automatic rollback on failure detection.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🔒</div>
+                <h3>Secure by Default</h3>
+                <p>SOC2 compliant with end-to-end encryption and automated vulnerability scanning.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📊</div>
+                <h3>Full Observability</h3>
+                <p>Built-in Prometheus metrics, Grafana dashboards, and intelligent alerting.</p>
+            </div>
+        </div>
+    </section>
+    <div class="stats">
+        <div class="stat"><h3>99.99%</h3><p>Uptime SLA</p></div>
+        <div class="stat"><h3>2.3s</h3><p>Avg Build Time</p></div>
+        <div class="stat"><h3>50k+</h3><p>Deployments/Day</p></div>
+        <div class="stat"><h3>120+</h3><p>Countries Served</p></div>
+    </div>
+    <footer>
+        <p>&copy; 2026 CloudSync - Static Website Template 4</p>
+    </footer>
+</body>
+</html>

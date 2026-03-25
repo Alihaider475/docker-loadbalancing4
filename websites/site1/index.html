@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPortfolio - Site 1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a23; color: #fff; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; background: rgba(10,10,35,0.95); position: fixed; width: 100%; top: 0; z-index: 100; }
+        nav .logo { font-size: 1.5rem; font-weight: 700; color: #6c63ff; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        nav ul a:hover { color: #6c63ff; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero h1 span { color: #6c63ff; }
+        .hero p { font-size: 1.2rem; color: #aaa; max-width: 600px; margin: 0 auto 30px; }
+        .btn { display: inline-block; padding: 14px 36px; background: #6c63ff; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+        .btn:hover { background: #5a52d5; transform: translateY(-2px); }
+        .section { padding: 80px 60px; }
+        .section h2 { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .card { background: #16163a; border-radius: 12px; padding: 30px; border: 1px solid #2a2a5a; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #6c63ff; }
+        .card h3 { color: #6c63ff; margin-bottom: 12px; }
+        .card p { color: #aaa; line-height: 1.6; }
+        .badge { display: inline-block; background: #6c63ff33; color: #6c63ff; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin: 5px 4px 0 0; }
+        footer { text-align: center; padding: 30px; color: #555; border-top: 1px solid #1a1a3a; }
+        .server-info { background: #1a1a3a; padding: 8px 16px; border-radius: 6px; display: inline-block; margin-top: 10px; color: #6c63ff; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">DevPortfolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero" id="home">
+        <div>
+            <h1>Hi, I'm <span>Alex Dev</span></h1>
+            <p>Full-stack developer passionate about building scalable web applications and cloud-native solutions.</p>
+            <a href="#projects" class="btn">View Projects</a>
+            <div class="server-info">Served from: Site 1 (Portfolio) | Container: website-1</div>
+        </div>
+    </section>
+    <section class="section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>E-Commerce Platform</h3>
+                <p>A full-stack e-commerce platform with payment integration, inventory management, and real-time analytics.</p>
+                <span class="badge">React</span><span class="badge">Node.js</span><span class="badge">MongoDB</span>
+            </div>
+            <div class="card">
+                <h3>Cloud Dashboard</h3>
+                <p>Real-time cloud infrastructure monitoring dashboard with automated alerting and cost optimization.</p>
+                <span class="badge">Vue.js</span><span class="badge">Python</span><span class="badge">AWS</span>
+            </div>
+            <div class="card">
+                <h3>CI/CD Pipeline</h3>
+                <p>Automated deployment pipeline with Docker, Kubernetes, and GitOps workflow integration.</p>
+                <span class="badge">Docker</span><span class="badge">K8s</span><span class="badge">Jenkins</span>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 DevPortfolio - Static Website Template 1</p>
+    </footer>
+</body>
+</html>
